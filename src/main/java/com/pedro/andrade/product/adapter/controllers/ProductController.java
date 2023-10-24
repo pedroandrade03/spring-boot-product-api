@@ -21,9 +21,9 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/products")
-    public ResponseEntity<Product> saveProduct(@RequestBody @Valid ProductDTO productRecordDto) {
+    public ResponseEntity<Product> saveProduct(@RequestBody @Valid ProductDTO productDTO) {
         var productModel = new Product();
-        BeanUtils.copyProperties(productRecordDto, productModel);
+        BeanUtils.copyProperties(productDTO, productModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveProduct(productModel));
     }
 
